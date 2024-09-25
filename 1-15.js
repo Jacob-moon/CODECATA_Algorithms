@@ -1,26 +1,38 @@
-//자릿수 더하기
-// 문제 설명
-// 자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는 solution 함수를 만들어 주세요.
-// 예를들어 N = 123이면 1 + 2 + 3 = 6을 return 하면 됩니다.
+// //나머지가 1이되는 수 찾기
+// //자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이 되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요. 답이 항상 존재함은 증명될 수 있습니다.
 
 // 제한사항
-// N의 범위 : 100,000,000 이하의 자연수
+
+// 3 ≤ n ≤ 1,000,000
 // 입출력 예
-// N	answer
-// 123	6
-// 987	24
+// n	result
+// 10	3
+// 12	11
 // 입출력 예 설명
 // 입출력 예 #1
-// 문제의 예시와 같습니다.
 
+// 10을 3으로 나눈 나머지가 1이고, 3보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 3을 return 해야 합니다.
 // 입출력 예 #2
-// 9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
 
-function solution(n)
-{
-   return n.toString().split('').reduce((acc,curr)=>
-     acc + parseInt(curr)
-   ,0);
+// 12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 11을 return 해야 합니다.
+
+//n%x=1 가 되도록하는 가장 작은 자연수 x 
+//n이 3거나 같기떄문에 i = 2 부터 시작
+
+function solution(n) {
+    let x = 0;
+    for (let i = 2; i <= n; i++){
+        if (n % i === 1){
+            x +=i;
+             return x;
+        }
+    }
+    return x;
 }
-console.log(solution(123));
-console.log(solution(987));
+console.log(solution(10));
+console.log(solution(12));
+
+
+
+
+// ex n = 3 일때 x는 2가 출력되어야함. n=4일때 x 는 3이 출력되어야함 n=10일때 x는 3이 출력되어야함.
